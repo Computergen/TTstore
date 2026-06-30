@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendor Dashboard | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Loading TULA MARKET</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container">
+      <section class="page-top">
+        <h1 class="page-title">Vendor Dashboard</h1>
+        <p class="page-copy">Manage products, inventory, analytics, messages, and store presence from a premium control center.</p>
+      </section>
+      <section class="dashboard-grid reveal">
+        <article class="stat-card"><h3>Products</h3><p class="price">48</p><p class="muted">Live listings</p></article>
+        <article class="stat-card"><h3>Revenue</h3><p class="price">$12.4k</p><p class="muted">This month</p></article>
+        <article class="stat-card"><h3>Orders</h3><p class="price">94</p><p class="muted">Open orders</p></article>
+        <article class="stat-card"><h3>Messages</h3><p class="price">16</p><p class="muted">Unread</p></article>
+      </section>
+
+      <section class="grid grid-2 reveal">
+        <article class="glass-card">
+          <div class="panel-header"><h3>Revenue Snapshot</h3><span class="badge">Updated</span></div>
+          <div class="chart-card"><div class="chart-placeholder">Revenue chart placeholder</div></div>
+        </article>
+        <article class="glass-card">
+          <div class="panel-header"><h3>Store Summary</h3><a class="btn btn-secondary" href="product.html">Add Product</a></div>
+          <ul class="action-list">
+            <li><strong>Store rating</strong> 4.9/5</li>
+            <li><strong>Featured products</strong> 8</li>
+            <li><strong>Pending stock alerts</strong> 4</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="glass-card reveal">
+        <div class="panel-header"><h3>Inventory & Orders</h3><a class="btn btn-secondary" href="orders.html">Manage Orders</a></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Product</th><th>Stock</th><th>Status</th><th>Sales</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Midnight Tote</td><td>18</td><td>In stock</td><td>120</td></tr>
+              <tr><td>Velvet Runner</td><td>24</td><td>Low stock</td><td>88</td></tr>
+              <tr><td>Platinum Pendant</td><td>12</td><td>In stock</td><td>51</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>

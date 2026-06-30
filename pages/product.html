@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Loading TULA MARKET</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container">
+      <section class="page-top">
+        <h1 class="page-title">Product Details</h1>
+        <p class="page-copy">A premium product page with high-quality imagery, vendor information, related products, and review sections.</p>
+      </section>
+      <section class="grid grid-2 reveal">
+        <article class="glass-card">
+          <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=80" alt="Luxury bag" />
+        </article>
+        <article class="glass-card">
+          <span class="badge">New arrival</span>
+          <h2>Signature Leather Bag</h2>
+          <p class="price">$480</p>
+          <p class="muted">Crafted from premium Italian leather, this signature bag blends timeless elegance with modern utility.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="cart.html">Add to Cart</a>
+            <a class="btn btn-secondary" href="wishlist.html">Wishlist</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>

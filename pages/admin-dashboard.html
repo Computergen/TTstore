@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Loading TULA MARKET</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container">
+      <section class="page-top">
+        <h1 class="page-title">Admin Dashboard</h1>
+        <p class="page-copy">Monitor analytics, approve vendors, manage products, and shape the marketplace experience from one control panel.</p>
+      </section>
+      <section class="dashboard-grid reveal">
+        <article class="stat-card"><h3>Total Revenue</h3><p class="price">$84.2k</p><p class="muted">This month</p></article>
+        <article class="stat-card"><h3>Active Vendors</h3><p class="price">124</p><p class="muted">Verified storefronts</p></article>
+        <article class="stat-card"><h3>Customers</h3><p class="price">3.1k</p><p class="muted">Engaged shoppers</p></article>
+        <article class="stat-card"><h3>Pending Orders</h3><p class="price">42</p><p class="muted">Needs attention</p></article>
+      </section>
+
+      <section class="grid grid-3 reveal">
+        <article class="glass-card">
+          <div class="panel-header"><h3>Daily Sales</h3><span class="badge">Live</span></div>
+          <div class="chart-card"><div class="chart-placeholder">Sales trend placeholder</div></div>
+        </article>
+        <article class="glass-card">
+          <div class="panel-header"><h3>Vendor Approvals</h3><span class="badge">New</span></div>
+          <ul class="action-list">
+            <li><strong>Aria Atelier</strong> — Awaiting verification</li>
+            <li><strong>Midtown Home</strong> — Pending review</li>
+            <li><strong>Glow Studio</strong> — Upload documents</li>
+          </ul>
+        </article>
+        <article class="glass-card">
+          <div class="panel-header"><h3>Top Products</h3><span class="badge">Today</span></div>
+          <ul class="action-list">
+            <li>Signature Chronograph — 52 sold</li>
+            <li>Velvet Runner — 40 sold</li>
+            <li>Platinum Pendant — 33 sold</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="glass-card reveal">
+        <div class="panel-header"><h3>Recent Marketplace Activity</h3><a class="btn btn-secondary" href="orders.html">View All Orders</a></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Order</th><th>Vendor</th><th>Status</th><th>Total</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#TULA-00842</td><td>Aurora Atelier</td><td>Dispatched</td><td>$1,240</td></tr>
+              <tr><td>#TULA-00879</td><td>Velvet House</td><td>Pending</td><td>$340</td></tr>
+              <tr><td>#TULA-00895</td><td>Street Luxe</td><td>Delivered</td><td>$180</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>

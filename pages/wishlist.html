@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishlist | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Loading TULA MARKET</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container">
+      <section class="page-top">
+        <h1 class="page-title">Wishlist</h1>
+        <p class="page-copy">Save the items you love for future purchase and keep track of your premium finds.</p>
+      </section>
+      <section class="grid grid-2 reveal">
+        <article class="product-card">
+          <div class="image-frame"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Premium perfume" /></div>
+          <h3>Velvet Elixir</h3>
+          <p class="meta">By Solstice Studio</p>
+          <p class="price">$140</p>
+        </article>
+        <article class="product-card">
+          <div class="image-frame"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Luxury watch" /></div>
+          <h3>Signature Chronograph</h3>
+          <p class="meta">By Aurora Atelier</p>
+          <p class="price">$1,240</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Loading TULA MARKET</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container">
+      <section class="page-top">
+        <h1 class="page-title">Shop the Collection</h1>
+        <p class="page-copy">Search, filter, and browse premium products from trusted vendors across the city.</p>
+        <div class="pill-row">
+          <span class="pill">Instant Search</span>
+          <span class="pill">Price Filter</span>
+          <span class="pill">Newest First</span>
+          <span class="pill">Highest Rated</span>
+        </div>
+      </section>
+      <section class="grid grid-4 reveal">
+        <article class="product-card">
+          <div class="image-frame"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80" alt="Designer lounge wear" /></div>
+          <h3>Studio Knit Set</h3>
+          <p class="meta">Modern essentials</p>
+          <p class="price">$220</p>
+        </article>
+        <article class="product-card">
+          <div class="image-frame"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" alt="Minimal handbag" /></div>
+          <h3>Midnight Tote</h3>
+          <p class="meta">Luxury carryall</p>
+          <p class="price">$340</p>
+        </article>
+        <article class="product-card">
+          <div class="image-frame"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Smart watch" /></div>
+          <h3>Digital Timepiece</h3>
+          <p class="meta">Premium tech</p>
+          <p class="price">$650</p>
+        </article>
+        <article class="product-card">
+          <div class="image-frame"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Luxury perfume" /></div>
+          <h3>Velvet Elixir</h3>
+          <p class="meta">Signature scent</p>
+          <p class="price">$140</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>

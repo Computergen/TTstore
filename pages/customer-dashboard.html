@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Dashboard | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Loading TULA MARKET</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container">
+      <section class="page-top">
+        <h1 class="page-title">Customer Dashboard</h1>
+        <p class="page-copy">Manage profile details, wishlist, orders, reviews, and notifications in one place.</p>
+      </section>
+      <section class="dashboard-grid reveal">
+        <article class="stat-card"><h3>Orders</h3><p class="price">12</p><p class="muted">Total purchases</p></article>
+        <article class="stat-card"><h3>Wishlist</h3><p class="price">8</p><p class="muted">Saved items</p></article>
+        <article class="stat-card"><h3>Reviews</h3><p class="price">5</p><p class="muted">Submitted</p></article>
+        <article class="stat-card"><h3>Rewards</h3><p class="price">1,240</p><p class="muted">Points available</p></article>
+      </section>
+
+      <section class="grid grid-2 reveal">
+        <article class="glass-card">
+          <div class="panel-header"><h3>Recent Orders</h3><a class="btn btn-secondary" href="orders.html">View All</a></div>
+          <ul class="action-list">
+            <li><strong>#TULA-00562</strong> Delivered — Signature Leather Bag</li>
+            <li><strong>#TULA-00571</strong> Processing — Velvet Elixir</li>
+          </ul>
+        </article>
+        <article class="notification-card reveal">
+          <div class="panel-header"><h3>Notifications</h3></div>
+          <ul class="action-list">
+            <li>New sale alert from Velvet House.</li>
+            <li>Your favorite vendor just launched a new collection.</li>
+            <li>Order #TULA-00571 shipped today.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>

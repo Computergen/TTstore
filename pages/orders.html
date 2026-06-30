@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Loading TULA MARKET</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container">
+      <section class="page-top">
+        <h1 class="page-title">Your Orders</h1>
+        <p class="page-copy">Track order status, manage returns, and review past purchases with a premium order interface.</p>
+      </section>
+      <section class="glass-card reveal">
+        <h3>Recent Orders</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Order</th><th>Date</th><th>Status</th><th>Total</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#TULA-00562</td><td>Jun 18, 2026</td><td>Delivered</td><td>$480</td></tr>
+              <tr><td>#TULA-00571</td><td>Jun 24, 2026</td><td>Processing</td><td>$220</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>
