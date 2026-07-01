@@ -19,15 +19,15 @@
 
     <main class="container" style="padding: 48px 0;">
       <section class="form-card reveal">
-        <h1 class="page-title">Create Your Account</h1>
-        <p class="page-copy">Choose your role and start exploring the marketplace.</p>
-        <div class="form-grid">
-          <div class="form-group"><label for="registerName">Full Name</label><input id="registerName" type="text" placeholder="Your full name" /></div>
-          <div class="form-group"><label for="registerRole">Role</label><select id="registerRole"><option>Customer</option><option>Vendor</option><option>Admin</option></select></div>
-        </div>
+        <h1 class="page-title">Create Your Free Online Store</h1>
+        <p class="page-copy">Join as a customer to shop or open a vendor storefront and start selling with a premium digital presence.</p>
+        <div class="form-group"><label for="registerName">Full Name</label><input id="registerName" type="text" placeholder="Your full name" /></div>
         <div class="form-group"><label for="registerEmail">Email</label><input id="registerEmail" type="email" placeholder="you@example.com" /></div>
         <div class="form-group"><label for="registerPassword">Password</label><input id="registerPassword" type="password" placeholder="Create a password" /></div>
-        <button id="registerBtn" class="btn btn-primary" type="button">Register</button>
+        <div class="pill-row">
+          <button id="registerBtn" class="btn btn-primary" type="button" data-role="customer">Create Customer Account</button>
+          <button id="registerVendorBtn" class="btn btn-secondary" type="button" data-role="vendor">Open Your Store</button>
+        </div>
         <p class="muted" id="registerMessage" style="margin-top: 12px;"></p>
       </section>
     </main>

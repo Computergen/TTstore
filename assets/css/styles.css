@@ -278,6 +278,91 @@ th:last-child, td:last-child { text-align: right; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes ripple { from { transform: scale(0); opacity: 0.4; } to { transform: scale(2.5); opacity: 0; } }
 
+.store-card {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+.store-card-banner {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+}
+.store-card-body {
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+.store-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.store-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--black);
+  font-weight: 800;
+}
+.store-avatar.large {
+  width: 68px;
+  height: 68px;
+  font-size: 1.35rem;
+}
+.store-card-copy {
+  color: var(--gray-soft);
+  margin: 0;
+}
+.store-stats-inline {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--gold-2);
+  font-size: 0.9rem;
+}
+.store-hero {
+  position: relative;
+  min-height: 360px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.store-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.store-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(5,5,5,0.86), rgba(5,5,5,0.4));
+  padding: 28px;
+  display: flex;
+  align-items: end;
+}
+.store-hero-content {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.shop-search-card {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
 @media (max-width: 960px) {
   .hero-grid, .grid-3, .grid-4, .grid-2, .dashboard-grid, .footer-grid, .form-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
@@ -290,4 +375,5 @@ th:last-child, td:last-child { text-align: right; }
   .header-actions { flex-wrap: wrap; justify-content: flex-end; }
   .hero { padding-top: 40px; }
   .section-header { flex-direction: column; align-items: flex-start; }
+  .store-hero-overlay { padding: 18px; }
 }
