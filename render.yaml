@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: ttstore-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/v1/catalog/stores
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ttstore-db
+          property: connectionString
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: FRONTEND_ORIGIN
+        value: https://ttstore-frontend.onrender.com
+      - key: SESSION_TTL_DAYS
+        value: "30"
+
+  - type: web
+    name: ttstore-frontend
+    runtime: static
+    buildCommand: echo "Static frontend ready"
+    staticPublishPath: .
+
+databases:
+  - name: ttstore-db
+    plan: free
