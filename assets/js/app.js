@@ -384,12 +384,12 @@ function setupCookieConsent() {
       <strong style="display:block; margin-bottom:6px; font-size: 0.96rem;">Cookie notice</strong>
       <span style="font-size: 0.9rem; color: rgba(248,238,223,0.82);">
         We use cookies and local storage to remember your preferences, cart items, and session. By using TULA MARKET, you agree to our
-        <a href="${basePath}pages/cookie-policy.html" style="color: #f0a184; text-decoration: underline;">Cookie Notice</a>
-        and <a href="${basePath}pages/privacy.html" style="color: #f0a184; text-decoration: underline;">Privacy Policy</a>.
+        <a href="${basePath}pages/cookie-policy.html" style="color: #e2c98f; text-decoration: underline;">Cookie Notice</a>
+        and <a href="${basePath}pages/privacy.html" style="color: #e2c98f; text-decoration: underline;">Privacy Policy</a>.
       </span>
     </div>
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <button type="button" data-cookie-choice="accept" style="padding:10px 16px; border-radius: 999px; background: linear-gradient(135deg, #b85c45, #d98265); border: none; color: white; font-weight: 700; cursor:pointer;">Accept</button>
+      <button type="button" data-cookie-choice="accept" style="padding:10px 16px; border-radius: 999px; background: linear-gradient(135deg, #0e5b4d, #12715d); border: none; color: white; font-weight: 700; cursor:pointer;">Accept</button>
       <button type="button" data-cookie-choice="decline" style="padding:10px 16px; border-radius: 999px; background: rgba(248,238,223,0.12); border: 1px solid rgba(248,238,223,0.18); color: white; font-weight: 700; cursor:pointer;">Decline</button>
     </div>
   `;
