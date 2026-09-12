@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendor Product Upload | TULA MARKET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>thats all for tonn
+    <div class="loading-screen">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3>Preparing your upload</h3>
+      </div>
+    </div>
+
+    <header class="site-header" data-header></header>
+
+    <main class="container" style="padding: 48px 0;">
+      <section class="form-card reveal">
+        <h1 class="page-title">Create Product</h1>
+        <p class="page-copy">Upload a new product for your storefront. Active products appear in the marketplace after upload.</p>
+
+        <form id="vendorProductForm" novalidate>
+          <div class="section-block">
+            <h2>Product Information</h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="productName">Product Name *</label>
+                <input id="productName" type="text" placeholder="Signature Leather Tote" required />
+              </div>
+              <div class="form-group">
+                <label for="shortDescription">Short Description *</label>
+                <input id="shortDescription" type="text" placeholder="Premium everyday carry" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fullDescription">Full Description *</label>
+              <textarea id="fullDescription" rows="4" placeholder="Tell buyers what makes this product special." required></textarea>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="category">Category *</label>
+                <input id="category" type="text" placeholder="Fashion" required />
+              </div>
+              <div class="form-group">
+                <label for="subcategory">Subcategory *</label>
+                <input id="subcategory" type="text" placeholder="Handbags" required />
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="brand">Brand *</label>
+                <input id="brand" type="text" placeholder="Aurora Atelier" required />
+              </div>
+              <div class="form-group">
+                <label for="sku">SKU *</label>
+                <input id="sku" type="text" placeholder="AA-001" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h2>Pricing & Inventory</h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="price">Price *</label>
+                <input id="price" type="number" min="0" step="0.01" placeholder="120.00" required />
+              </div>
+              <div class="form-group">
+                <label for="discountPrice">Discount Price (Optional)</label>
+                <input id="discountPrice" type="number" min="0" step="0.01" placeholder="99.00" />
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="stockQuantity">Stock Quantity *</label>
+                <input id="stockQuantity" type="number" min="0" step="1" placeholder="25" required />
+              </div>
+              <div class="form-group">
+                <label for="condition">Condition *</label>
+                <select id="condition" required>
+                  <option value="">Select condition</option>
+                  <option value="New">New</option>
+                  <option value="Used">Used</option>
+                  <option value="Refurbished">Refurbished</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="availability">Availability *</label>
+                <select id="availability" required>
+                  <option value="">Select availability</option>
+                  <option value="In Stock">In Stock</option>
+                  <option value="Out of Stock">Out of Stock</option>
+                  <option value="Preorder">Preorder</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="deliveryAvailable">Delivery Available *</label>
+                <select id="deliveryAvailable" required>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="productStatus">Product Status</label>
+                <select id="productStatus">
+                  <option value="Active" selected>Active</option>
+                  <option value="Draft">Draft</option>
+                  <option value="Hidden">Hidden</option>
+                  <option value="Out of Stock">Out of Stock</option>
+                  <option value="Archived">Archived</option>
+                </select>
+                <small class="muted">Choose Draft to keep the product private until you are ready.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h2>Shipping Details</h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="shippingWeight">Shipping Weight *</label>
+                <input id="shippingWeight" type="text" placeholder="1.2 kg" required />
+              </div>
+              <div class="form-group">
+                <label for="dimensions">Dimensions *</label>
+                <input id="dimensions" type="text" placeholder="32 x 24 x 10 cm" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h2>Search & Discovery</h2>
+            <div class="form-group">
+              <label for="tags">Tags</label>
+              <input id="tags" type="text" placeholder="luxury, leather, gift" />
+            </div>
+            <div class="form-group">
+              <label for="keywords">Keywords</label>
+              <input id="keywords" type="text" placeholder="premium bag, travel accessory" />
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h2>Images</h2>
+            <p class="muted">Upload between 1 and 8 product images. The first image is used as the featured image.</p>
+            <div class="form-group">
+              <label for="productImages">Product Images *</label>
+              <input id="productImages" type="file" accept="image/*" multiple required />
+            </div>
+            <div id="productImagePreview" class="pill-row" style="margin-top: 12px;"></div>
+          </div>
+
+          <button id="uploadProductBtn" class="btn btn-primary" type="submit">Upload Product</button>
+          <p class="muted" id="productFormMessage" style="margin-top: 12px;"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="../firebase/firebase-config.js"></script>
+    <script src="../firebase/auth.js"></script>
+    <script src="../firebase/firestore.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>

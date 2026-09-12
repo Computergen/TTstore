@@ -1,0 +1,183 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function ownUser(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function currentUser() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isVendor() {
+      return signedIn()
+        && currentUser().role == 'vendor'
+        && currentUser().vendorId is string;
+    }
+
+    function ownsVendor(vendorId) {
+      return isVendor() && currentUser().vendorId == vendorId;
+    }
+
+    function validProductStatus(status) {
+      return status in ['Draft', 'Active', 'Hidden', 'Out of Stock', 'Archived'];
+    }
+
+    function validProduct(data) {
+      return data.vendorId is string
+        && data.storeSlug is string
+        && data.productName is string
+        && data.shortDescription is string
+        && data.fullDescription is string
+        && data.category is string
+        && data.price is number
+        && data.price >= 0
+        && data.stockQuantity is int
+        && data.stockQuantity >= 0
+        && data.status is string
+        && validProductStatus(data.status)
+        && data.createdAt is string
+        && data.updatedAt is string;
+    }
+
+    function ownsRequestedVendorProfile() {
+      return request.resource.data.vendorId is string
+        && exists(/databases/$(database)/documents/vendors/$(request.resource.data.vendorId))
+        && get(/databases/$(database)/documents/vendors/$(request.resource.data.vendorId)).data.ownerUid == request.auth.uid;
+    }
+
+    match /users/{userId} {
+      allow read: if ownUser(userId);
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.email is string
+        && request.resource.data.role in ['customer', 'vendor']
+        && (
+          (request.resource.data.role == 'customer'
+            && request.resource.data.vendorId == null)
+          || (request.resource.data.role == 'vendor'
+            && request.resource.data.vendorId is string
+            && request.resource.data.storeSlug is string)
+        );
+      allow update: if ownUser(userId)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.role in ['customer', 'vendor']
+        && (
+          (request.resource.data.role == resource.data.role
+            && request.resource.data.vendorId == resource.data.vendorId)
+          || (
+            request.resource.data.role == 'vendor'
+            && request.resource.data.vendorId is string
+            && request.resource.data.storeSlug is string
+          )
+        );
+      allow delete: if false;
+    }
+
+    match /products/{productId} {
+      allow read: if (resource.data.status == 'Active')
+        || ownsVendor(resource.data.vendorId);
+
+      allow create: if ownsVendor(request.resource.data.vendorId)
+        && validProduct(request.resource.data)
+        && request.resource.data.productId == productId;
+
+      allow update: if ownsVendor(resource.data.vendorId)
+        && request.resource.data.vendorId == resource.data.vendorId
+        && request.resource.data.storeSlug == resource.data.storeSlug
+        && validProduct(request.resource.data);
+
+      allow delete: if ownsVendor(resource.data.vendorId);
+    }
+
+    match /stores/{storeSlug} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.resource.data.vendorId is string
+        && request.resource.data.slug == storeSlug
+        && request.resource.data.name is string
+        && (
+          exists(/databases/$(database)/documents/vendors/$(request.resource.data.vendorId))
+          ? get(/databases/$(database)/documents/vendors/$(request.resource.data.vendorId)).data.ownerUid == request.auth.uid
+          : request.resource.data.ownerUid == request.auth.uid
+        );
+      allow update: if signedIn()
+        && resource.data.vendorId == request.resource.data.vendorId
+        && (
+          ownsVendor(resource.data.vendorId)
+          || resource.data.ownerUid == request.auth.uid
+        )
+        && request.resource.data.slug == storeSlug;
+      allow delete: if false;
+    }
+
+    match /orders/{orderId} {
+      allow read: if signedIn()
+        && (resource.data.customerId == request.auth.uid
+          || (isVendor() && resource.data.vendorIds is list && currentUser().vendorId in resource.data.vendorIds));
+      allow create: if signedIn()
+        && request.resource.data.customerId == request.auth.uid
+        && request.resource.data.orderId == orderId
+        && request.resource.data.paymentStatus == 'Pending';
+      allow update: if signedIn()
+        && (
+          (resource.data.customerId == request.auth.uid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['updatedAt'])
+            && request.resource.data.customerId == resource.data.customerId
+            && request.resource.data.paymentStatus == resource.data.paymentStatus
+            && request.resource.data.orderStatus == resource.data.orderStatus
+            && request.resource.data.paymentReference == resource.data.paymentReference)
+          || (isVendor()
+            && resource.data.vendorIds is list
+            && currentUser().vendorId in resource.data.vendorIds
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['orderStatus', 'updatedAt'])
+            && request.resource.data.customerId == resource.data.customerId
+            && request.resource.data.vendorIds == resource.data.vendorIds
+            && request.resource.data.paymentStatus == resource.data.paymentStatus
+            && request.resource.data.orderStatus in ['Pending Payment', 'Processing', 'Shipped', 'Delivered', 'Cancelled'])
+        );
+      allow delete: if false;
+    }
+
+    match /vendors/{vendorId} {
+      allow read: if signedIn() && (
+        ownsVendor(vendorId)
+        || resource.data.ownerUid == request.auth.uid
+      );
+      allow create: if signedIn()
+        && request.resource.data.vendorId == vendorId
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.businessName is string
+        && request.resource.data.storeDisplayName is string
+        && request.resource.data.createdAt is string;
+      allow update: if signedIn()
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.vendorId == vendorId
+        && request.resource.data.ownerUid == request.auth.uid;
+      allow delete: if false;
+    }
+
+    match /notifications/{notificationId} {
+      allow read, delete: if signedIn() && resource.data.userId == request.auth.uid;
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 500
+        && request.resource.data.type in ['info', 'success', 'warning', 'error']
+        && request.resource.data.read == false;
+      allow update: if signedIn()
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read'])
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.read is bool;
+    }
+  }
+}

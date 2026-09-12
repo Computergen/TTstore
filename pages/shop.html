@@ -33,12 +33,18 @@
           <span>Search stores or products</span>
           <input id="storeSearch" type="search" placeholder="Try fashion, beauty, or jamosky" />
         </label>
+        <div class="shop-filter-grid">
+          <label><span>Category</span><select id="shopCategory"><option value="">All Categories</option></select></label>
+          <label><span>Availability</span><select id="shopAvailability"><option value="">All Availability</option><option value="In Stock">In Stock</option><option value="Out of Stock">Out of Stock</option></select></label>
+          <label><span>Minimum Rating</span><select id="shopRating"><option value="0">Any Rating</option><option value="4">4+ stars</option><option value="4.5">4.5+ stars</option><option value="4.8">4.8+ stars</option></select></label>
+          <label><span>Sort Products</span><select id="shopSort"><option value="featured">Featured</option><option value="newest">Newest</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="rating">Highest Rated</option></select></label>
+        </div>
       </section>
       <section class="section reveal">
         <div class="section-header">
           <div>
             <h2 class="section-title">Featured Stores</h2>
-            <p class="section-subtitle">Visit a storefront and explore only that vendor's catalog.</p>
+            <p id="storeResultsCount" class="section-subtitle">Visit a storefront and explore only that vendor's catalog.</p>
           </div>
         </div>
         <div class="grid grid-4" id="storeDiscoveryGrid"></div>
@@ -47,7 +53,7 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">Featured Products</h2>
-            <p class="section-subtitle">Search and compare products from across the marketplace.</p>
+            <p id="productResultsCount" class="section-subtitle">Search and compare products from across the marketplace.</p>
           </div>
         </div>
         <div class="grid grid-4" id="shopProductsGrid"></div>

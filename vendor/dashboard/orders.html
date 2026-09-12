@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders | Vendor Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+  </head>
+  <body class="vendor-dashboard-page">
+    <div class="loading-screen"><div class="loading-card"><div class="spinner"></div><h3>Loading your orders</h3></div></div>
+    <header class="site-header" data-header></header>
+    <main class="vendor-dashboard-shell">
+      <aside class="vendor-sidebar" aria-label="Vendor navigation">
+        <div class="vendor-sidebar-brand"><img class="brand-mark brand-logo" src="../../images/tmlogo.jpeg" alt="TULA MARKET logo" /></div>
+        <nav class="vendor-sidebar-nav">
+          <a href="./">Dashboard</a>
+          <a href="./products.html">Products</a>
+          <a class="active" href="./orders.html">Orders</a>
+          <a href="./analytics.html">Analytics</a>
+          <a href="./#store-settings">Store Settings</a>
+          <a href="./#profile">Profile</a>
+          <button id="vendorLogoutBtn" type="button">Logout</button>
+        </nav>
+      </aside>
+      <section class="vendor-dashboard-main">
+        <div class="vendor-dashboard-head">
+          <div><p class="eyebrow">Fulfilment</p><h1 class="page-title">Orders</h1><p class="page-copy">Manage customer orders for your store.</p></div>
+        </div>
+        <section class="vendor-section">
+          <div class="section-header"><div><h2 class="section-title">Orders</h2></div><span id="vendorOrdersCount" class="badge">Loading</span></div>
+          <p id="vendorOrdersMessage" class="muted" role="status"></p>
+          <div class="table-wrap"><table><thead><tr><th>Order</th><th>Date</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead><tbody id="vendorOrdersTable"><tr><td colspan="5" class="muted">Loading orders...</td></tr></tbody></table></div>
+        </section>
+      </section>
+    </main>
+    <script src="../../firebase/firebase-config.js"></script>
+    <script src="../../firebase/auth.js"></script>
+    <script src="../../firebase/firestore.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script>document.getElementById('vendorLogoutBtn')?.addEventListener('click', () => { window.tulaAuth?.signOut(); window.location.href = '../../index.html'; });</script>
+  </body>
+</html>

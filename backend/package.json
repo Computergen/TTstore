@@ -1,0 +1,19 @@
+{
+  "name": "tula-market-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TULA MARKET application API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check": "node --check src/server.js && node --check src/passwords.js && node --check src/db.js && node --check src/migrate.js",
+    "db:migrate": "node src/migrate.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}

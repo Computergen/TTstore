@@ -22,18 +22,17 @@
         <h1 class="page-title">Shopping Cart</h1>
         <p class="page-copy">Review your choices, adjust quantities, and continue to checkout with confidence.</p>
       </section>
-      <section class="grid grid-2 reveal">
+      <section id="cartPageContent" class="grid grid-2 reveal">
         <article class="glass-card">
           <h3>Cart Items</h3>
-          <p class="muted">1 × Signature Leather Bag • $480</p>
-          <p class="muted">1 × Velvet Elixir • $140</p>
+          <div id="cartItems"><div class="empty-state"><strong>Your cart is empty.</strong><p class="muted">Products you add will appear here.</p></div></div>
         </article>
         <article class="glass-card">
           <h3>Order Summary</h3>
-          <p class="muted">Subtotal: $620</p>
-          <p class="muted">Delivery: $18</p>
-          <p class="price">Total: $638</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="checkout.html">Checkout</a></div>
+          <p class="muted">Subtotal: <strong id="cartSubtotal">₦0.00</strong></p>
+          <p class="muted">Delivery: <strong id="cartDelivery">₦0.00</strong></p>
+          <p class="price">Total: <strong id="cartTotal">₦0.00</strong></p>
+          <div class="hero-actions"><a id="cartCheckoutLink" class="btn btn-primary" href="checkout.html" aria-disabled="true">Checkout</a></div>
         </article>
       </section>
     </main>

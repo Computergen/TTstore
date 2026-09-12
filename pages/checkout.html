@@ -22,26 +22,37 @@
         <h1 class="page-title">Secure Checkout</h1>
         <p class="page-copy">Complete your purchase with a simple, premium checkout experience.</p>
       </section>
-      <section class="grid grid-2 reveal">
+      <form id="checkoutForm" class="grid grid-2 reveal" novalidate>
         <article class="form-card">
           <h3>Customer Details</h3>
-          <div class="form-group"><label>Name</label><input type="text" placeholder="Your name" /></div>
-          <div class="form-group"><label>Email</label><input type="email" placeholder="Your email" /></div>
-          <div class="form-group"><label>Address</label><textarea rows="3" placeholder="Delivery address"></textarea></div>
+          <div class="form-group"><label for="checkoutName">Name</label><input id="checkoutName" type="text" autocomplete="name" placeholder="Your name" required /></div>
+          <div class="form-group"><label for="checkoutEmail">Email</label><input id="checkoutEmail" type="email" autocomplete="email" placeholder="Your email" required /></div>
+          <div class="form-group"><label for="checkoutAddress">Address</label><textarea id="checkoutAddress" rows="3" autocomplete="street-address" placeholder="Delivery address" required></textarea></div>
         </article>
         <article class="form-card">
           <h3>Payment & Summary</h3>
-          <div class="form-group"><label>Payment Method</label><select><option>Card</option><option>Cash on Delivery</option></select></div>
-          <p class="muted">Subtotal: $620</p>
-          <p class="muted">Transaction Fee: $12</p>
-          <p class="price">Total: $632</p>
-          <button class="btn btn-primary" type="button">Place Order</button>
+          <div class="form-group"><label for="paymentMethod">Payment Method</label><select id="paymentMethod"><option value="paystack">Paystack (card, transfer, USSD)</option><option value="cod">Cash on Delivery</option></select></div>
+          <div id="checkoutItems" class="checkout-items"></div>
+          <p class="muted">Subtotal: <strong id="checkoutSubtotal">₦0.00</strong></p>
+          <p class="muted">Delivery: <strong id="checkoutDelivery">₦0.00</strong></p>
+          <p class="muted">Transaction Fee: <strong id="checkoutFee">₦0.00</strong></p>
+          <p class="price">Total: <strong id="checkoutTotal">₦0.00</strong></p>
+          <button id="placeOrderBtn" class="btn btn-primary" type="submit">Continue to Payment</button>
+          <p id="checkoutMessage" class="muted" role="status" style="margin-top: 12px;"></p>
         </article>
-      </section>
+      </form>
     </main>
 
     <footer class="site-footer" data-footer></footer>
 
+    <script>
+      window.TULA_PAYSTACK_PUBLIC_KEY = window.TULA_PAYSTACK_PUBLIC_KEY || 'pk_test_ce73024aa2e8f9d581fe00bda87667f1d03952d6';
+      window.TULA_MARKET_CONFIG = window.TULA_MARKET_CONFIG || {};
+      window.TULA_MARKET_CONFIG.paystack = window.TULA_MARKET_CONFIG.paystack || {
+        publicKey: window.TULA_PAYSTACK_PUBLIC_KEY
+      };
+    </script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <script src="../firebase/firebase-config.js"></script>
     <script src="../firebase/auth.js"></script>
     <script src="../firebase/firestore.js"></script>

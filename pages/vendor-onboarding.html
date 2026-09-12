@@ -19,29 +19,63 @@
 
     <main class="container" style="padding: 48px 0;">
       <section class="form-card reveal">
-        <h1 class="page-title">Welcome to your storefront</h1>
-        <p class="page-copy">Set up your store details and launch your premium presence in just a few steps.</p>
-        <form id="vendorOnboardingForm">
-          <div class="form-grid">
-            <div class="form-group"><label for="storeName">Store Name</label><input id="storeName" type="text" placeholder="Your store name" /></div>
-            <div class="form-group"><label for="storeCategory">Business Category</label><input id="storeCategory" type="text" placeholder="Fashion, Beauty, Wellness..." /></div>
+        <h1 class="page-title">Vendor Registration</h1>
+        <p class="page-copy">Complete your vendor identity profile to launch your storefront on TULA MARKET.</p>
+        <form id="vendorOnboardingForm" novalidate>
+          <div class="section-block">
+            <h2>Business Information</h2>
+            <p class="muted">Only the essentials needed to launch your storefront.</p>
+            <div class="form-grid">
+              <div class="form-group"><label for="businessName">Business Name *</label><input id="businessName" type="text" placeholder="Tula's Gadgets" required /></div>
+              <div class="form-group"><label for="storeDisplayName">Store Display Name *</label><input id="storeDisplayName" type="text" placeholder="Tulas Gadgets" required /></div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group"><label for="businessCategory">Business Category *</label><input id="businessCategory" type="text" placeholder="Fashion, Beauty, Wellness..." required /></div>
+              <div class="form-group"><label for="businessPhone">Business Phone *</label><input id="businessPhone" type="text" placeholder="+234 800 000 0000" required /></div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group"><label for="businessEmail">Business Email *</label><input id="businessEmail" type="email" placeholder="hello@yourbusiness.com" required /></div>
+              <div class="form-group"><label for="country">Country *</label><input id="country" type="text" placeholder="Nigeria" required /></div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group"><label for="state">State *</label><input id="state" type="text" placeholder="Lagos" required /></div>
+              <div class="form-group"><label for="city">City *</label><input id="city" type="text" placeholder="Ikeja" required /></div>
+            </div>
+            <div class="form-group"><label for="address">Full Address *</label><input id="address" type="text" placeholder="123 Market Road, Ikeja" required /></div>
+            <div class="form-group"><label for="businessDescription">Business Description</label><textarea id="businessDescription" rows="3" placeholder="Tell shoppers what makes your storefront special."></textarea></div>
           </div>
-          <div class="form-group"><label for="storeDescription">Business Description</label><textarea id="storeDescription" rows="3" placeholder="Tell shoppers what makes your storefront special."></textarea></div>
-          <div class="form-grid">
-            <div class="form-group"><label for="storePhone">Phone Number</label><input id="storePhone" type="text" placeholder="+234 800 000 0000" /></div>
-            <div class="form-group"><label for="storeWhatsapp">WhatsApp Number</label><input id="storeWhatsapp" type="text" placeholder="WhatsApp contact" /></div>
+
+          <div class="section-block">
+            <h2>Owner Information</h2>
+            <p class="muted">We only need the person managing the store.</p>
+            <div class="form-grid">
+              <div class="form-group"><label for="ownerName">Owner Full Name *</label><input id="ownerName" type="text" placeholder="Tula Amah" required /></div>
+              <div class="form-group"><label for="ownerPhone">Owner Phone Number</label><input id="ownerPhone" type="text" placeholder="+234 800 000 0000" /></div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group"><label for="ownerEmail">Owner Email</label><input id="ownerEmail" type="email" placeholder="owner@yourbusiness.com" /></div>
+              <div class="form-group"><label for="ownerPicture">Profile Picture URL</label><input id="ownerPicture" type="text" placeholder="https://example.com/profile.jpg" /></div>
+            </div>
           </div>
-          <div class="form-grid">
-            <div class="form-group"><label for="storeEmail">Business Email</label><input id="storeEmail" type="email" placeholder="hello@yourstore.com" /></div>
-            <div class="form-group"><label for="storeAddress">Business Address</label><input id="storeAddress" type="text" placeholder="City, neighborhood, or address" /></div>
+
+          <div class="section-block">
+            <h2>Branding</h2>
+            <p class="muted">Optional but useful for your storefront.</p>
+            <div class="form-grid">
+              <div class="form-group"><label for="storeLogo">Store Logo</label><input id="storeLogo" type="file" accept="image/*" /><div id="storeLogoPreview" class="branding-image-preview" aria-live="polite"></div></div>
+              <div class="form-group"><label for="storeBanner">Store Banner</label><input id="storeBanner" type="file" accept="image/*" /><div id="storeBannerPreview" class="branding-image-preview" aria-live="polite"></div></div>
+            </div>
           </div>
-          <div class="form-grid">
-            <div class="form-group"><label for="storeHours">Business Hours</label><input id="storeHours" type="text" placeholder="Mon-Sat 9:00 AM - 8:00 PM" /></div>
-            <div class="form-group"><label for="storeSocial">Social Links</label><input id="storeSocial" type="text" placeholder="Instagram, TikTok, Facebook" /></div>
+
+          <div class="section-block">
+            <h2>Agreements</h2>
+            <p class="muted">A quick confirmation before launch.</p>
+            <div class="form-group"><label><input id="agreeTerms" type="checkbox" /> I agree to the TTStore Terms *</label></div>
+            <div class="form-group"><label><input id="agreeRules" type="checkbox" /> I agree to the Marketplace Rules *</label></div>
+            <div class="form-group"><label><input id="agreePrivacy" type="checkbox" /> I agree to the Privacy Policy *</label></div>
           </div>
-          <div class="form-group"><label for="storeBanner">Banner URL</label><input id="storeBanner" type="text" placeholder="https://example.com/banner.jpg" /></div>
-          <div class="form-group"><label for="storeLogo">Logo URL</label><input id="storeLogo" type="text" placeholder="https://example.com/logo.png" /></div>
-          <button id="onboardingSaveBtn" class="btn btn-primary" type="submit">Save Store Details</button>
+
+          <button id="onboardingSaveBtn" class="btn btn-primary" type="submit">Submit Vendor Registration</button>
           <p class="muted" id="onboardingMessage" style="margin-top: 12px;"></p>
         </form>
       </section>

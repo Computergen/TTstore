@@ -22,11 +22,14 @@
         <h1 class="page-title">Create Your Free Online Store</h1>
         <p class="page-copy">Join as a customer to shop or open a vendor storefront and start selling with a premium digital presence.</p>
         <div class="form-group"><label for="registerName">Full Name</label><input id="registerName" type="text" placeholder="Your full name" /></div>
+        <div class="form-group profile-picture-field"><label for="registerProfilePicture">Profile Picture (optional)</label><input id="registerProfilePicture" type="file" accept="image/*" /><div id="registerProfilePicturePreview" class="profile-picture-preview" aria-live="polite"></div></div>
         <div class="form-group"><label for="registerEmail">Email</label><input id="registerEmail" type="email" placeholder="you@example.com" /></div>
         <div class="form-group"><label for="registerPassword">Password</label><input id="registerPassword" type="password" placeholder="Create a password" /></div>
+        <div class="form-group"><label for="registerConfirmPassword">Confirm Password</label><input id="registerConfirmPassword" type="password" placeholder="Re-enter password" /></div>
+        <div class="form-group"><label for="registerStoreName">Store Name (vendors only)</label><input id="registerStoreName" type="text" placeholder="Your store name" /></div>
         <div class="pill-row">
           <button id="registerBtn" class="btn btn-primary" type="button" data-role="customer">Create Customer Account</button>
-          <button id="registerVendorBtn" class="btn btn-secondary" type="button" data-role="vendor">Open Your Store</button>
+          <button id="registerVendorBtn" class="btn btn-secondary" type="button" data-role="vendor">Continue to Vendor Registration</button>
         </div>
         <p class="muted" id="registerMessage" style="margin-top: 12px;"></p>
       </section>
@@ -35,6 +38,7 @@
     <footer class="site-footer" data-footer></footer>
 
     <script src="../firebase/firebase-config.js"></script>
+    <script src="../assets/js/api.js"></script>
     <script src="../firebase/auth.js"></script>
     <script src="../firebase/firestore.js"></script>
     <script src="../assets/js/app.js"></script>

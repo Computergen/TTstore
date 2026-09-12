@@ -8,7 +8,18 @@ const firebaseConfig = {
   projectId: 'tulamarket-9d9c5',
   storageBucket: 'tulamarket-9d9c5.appspot.com',
   messagingSenderId: '809189723612',
-  appId: 'G-MF7ZDJCYH2'
+  appId: '1:809189723612:web:b86a470970f5b4ae131319'
+};
+
+window.TULA_MARKET_CONFIG = window.TULA_MARKET_CONFIG || {
+  apiBaseUrl: 'http://localhost:3000/api/v1',
+  demoData: false,
+  cloudinary: {
+    cloudName: 'a2upl31l',
+    uploadPreset: 'tulamarket'
+  },
+  supportEmail: 'tulastech@gmail.com',
+  emailSenderName: 'TULA MARKET'
 };
 
 function loadScript(src) {
@@ -42,11 +53,9 @@ async function initializeFirebase() {
   }
 
   try {
-    await Promise.all([
-      loadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js'),
-      loadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js'),
-      loadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js')
-    ]);
+    await loadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js');
+    await loadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js');
+    await loadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js');
 
     if (!window.firebase) {
       throw new Error('Firebase SDK failed to load.');
@@ -61,6 +70,8 @@ async function initializeFirebase() {
     window.tulaFirebaseFirestore = window.firebase.firestore();
     window.tulaFirebaseReady = true;
     window.tulaFirebaseError = '';
+    window.dispatchEvent(new CustomEvent('tula-firebase-ready'));
+    window.tulaAuth?.monitorFirebaseAccount?.();
     return { success: true, message: 'Firebase initialized successfully.' };
   } catch (error) {
     window.tulaFirebaseReady = false;

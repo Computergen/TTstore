@@ -1,0 +1,11 @@
+# Local Netlify folder
+.netlify
+
+# Local Firebase and dependency state
+.firebase/
+**/node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example

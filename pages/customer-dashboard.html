@@ -23,27 +23,21 @@
         <p class="page-copy">Manage profile details, wishlist, orders, reviews, and notifications in one place.</p>
       </section>
       <section class="dashboard-grid reveal">
-        <article class="stat-card"><h3>Orders</h3><p class="price">12</p><p class="muted">Total purchases</p></article>
-        <article class="stat-card"><h3>Wishlist</h3><p class="price">8</p><p class="muted">Saved items</p></article>
-        <article class="stat-card"><h3>Reviews</h3><p class="price">5</p><p class="muted">Submitted</p></article>
-        <article class="stat-card"><h3>Rewards</h3><p class="price">1,240</p><p class="muted">Points available</p></article>
+        <article class="stat-card"><h3>Orders</h3><p class="price">--</p><p class="muted">View your order history</p></article>
+        <article class="stat-card"><h3>Wishlist</h3><p class="price">--</p><p class="muted">Saved items</p></article>
+        <article class="stat-card"><h3>Reviews</h3><p class="price">--</p><p class="muted">Submitted reviews</p></article>
+        <article class="stat-card"><h3>Rewards</h3><p class="price">--</p><p class="muted">Points available</p></article>
       </section>
 
       <section class="grid grid-2 reveal">
         <article class="glass-card">
           <div class="panel-header"><h3>Recent Orders</h3><a class="btn btn-secondary" href="orders.html">View All</a></div>
-          <ul class="action-list">
-            <li><strong>#TULA-00562</strong> Delivered — Signature Leather Bag</li>
-            <li><strong>#TULA-00571</strong> Processing — Velvet Elixir</li>
-          </ul>
+          <div class="empty-state"><strong>Order history is ready.</strong><p class="muted">Your real orders will appear after checkout.</p><a class="btn btn-secondary" href="orders.html">View Orders</a></div>
         </article>
         <article class="notification-card reveal">
-          <div class="panel-header"><h3>Notifications</h3></div>
-          <ul class="action-list">
-            <li>New sale alert from Velvet House.</li>
-            <li>Your favorite vendor just launched a new collection.</li>
-            <li>Order #TULA-00571 shipped today.</li>
-          </ul>
+          <div class="panel-header"><h3>Notifications</h3><button id="clearNotifBtn" class="btn btn-secondary" style="font-size: 0.85rem;">Clear All</button></div>
+          <div id="notificationsList" class="notification-list"></div>
+          <div id="noNotifications" class="empty-state"><strong>No notifications yet.</strong><p class="muted">Account updates will appear here.</p></div>
         </article>
       </section>
     </main>
@@ -54,5 +48,96 @@
     <script src="../firebase/auth.js"></script>
     <script src="../firebase/firestore.js"></script>
     <script src="../assets/js/app.js"></script>
+    <script>
+      let unsubscribeNotifications = null;
+
+      async function loadNotifications() {
+        const session = window.tulaAuth?.getSession?.();
+        if (!session || !session.uid) return;
+
+        // Clean up old subscription
+        if (unsubscribeNotifications) {
+          unsubscribeNotifications();
+        }
+
+        // Subscribe to real-time updates
+        if (window.tulaNotifications?.subscribeToNotifications) {
+          unsubscribeNotifications = await window.tulaNotifications.subscribeToNotifications(
+            session.uid,
+            renderNotifications
+          );
+        } else {
+          // Fallback: load once
+          renderNotifications(await window.tulaNotifications.getNotifications(session.uid));
+        }
+      }
+
+      function renderNotifications(notifications) {
+        const session = window.tulaAuth?.getSession?.();
+        if (!session || !session.uid) return;
+
+        const notifsList = document.getElementById('notificationsList');
+        const noNotifications = document.getElementById('noNotifications');
+
+        if (notifications.length === 0) {
+          notifsList.innerHTML = '';
+          noNotifications.style.display = 'block';
+          return;
+        }
+
+        noNotifications.style.display = 'none';
+        notifsList.innerHTML = notifications.map(notif => {
+          const typeIcon = {
+            'success': '✓',
+            'error': '✕',
+            'warning': '⚠',
+            'info': 'ℹ'
+          }[notif.type] || 'ℹ';
+
+          return `
+            <div class="notification-item notification-${notif.type}" data-id="${notif.id}">
+              <div class="notification-content">
+                <span class="notification-icon">${typeIcon}</span>
+                <p class="notification-message">${notif.message}</p>
+              </div>
+              <button class="notification-close" data-id="${notif.id}">×</button>
+            </div>
+          `;
+        }).join('');
+
+        // Add close handlers
+        document.querySelectorAll('.notification-close').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            const notifId = e.target.dataset.id;
+            await window.tulaNotifications.deleteNotification(session.uid, notifId);
+            e.target.closest('.notification-item').remove();
+            
+            if (notifsList.children.length === 0) {
+              notifsList.innerHTML = '';
+              noNotifications.style.display = 'block';
+            }
+          });
+        });
+      }
+
+      // Clear all notifications
+      document.getElementById('clearNotifBtn')?.addEventListener('click', async () => {
+        const session = window.tulaAuth?.getSession?.();
+        if (session?.uid) {
+          await window.tulaNotifications.clearAll(session.uid);
+          loadNotifications();
+        }
+      });
+
+      // Load on page load
+      document.addEventListener('DOMContentLoaded', loadNotifications);
+
+      // Cleanup on page unload
+      window.addEventListener('beforeunload', () => {
+        if (unsubscribeNotifications) {
+          unsubscribeNotifications();
+        }
+      });
+    </script>
   </body>
 </html>

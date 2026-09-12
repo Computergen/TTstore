@@ -24,17 +24,16 @@
       </section>
       <section class="glass-card reveal">
         <h3>Recent Orders</h3>
+        <div id="customerOrderDetails"></div>
         <div class="table-wrap">
           <table>
             <thead>
-              <tr><th>Order</th><th>Date</th><th>Status</th><th>Total</th></tr>
+              <tr><th>Order</th><th>Date</th><th>Status</th><th>Total</th><th></th></tr>
             </thead>
-            <tbody>
-              <tr><td>#TULA-00562</td><td>Jun 18, 2026</td><td>Delivered</td><td>$480</td></tr>
-              <tr><td>#TULA-00571</td><td>Jun 24, 2026</td><td>Processing</td><td>$220</td></tr>
-            </tbody>
+            <tbody id="customerOrdersTable"><tr><td colspan="5" class="muted">Loading orders...</td></tr></tbody>
           </table>
         </div>
+        <p id="customerOrdersMessage" class="muted" role="status"></p>
       </section>
     </main>
 

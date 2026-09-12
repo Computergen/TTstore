@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | Vendor Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+  </head>
+  <body class="vendor-dashboard-page">
+    <div class="loading-screen"><div class="loading-card"><div class="spinner"></div><h3>Loading your products</h3></div></div>
+    <header class="site-header" data-header></header>
+    <main class="vendor-dashboard-shell">
+      <aside class="vendor-sidebar" aria-label="Vendor navigation">
+        <div class="vendor-sidebar-brand"><img class="brand-mark brand-logo" src="../../images/tmlogo.jpeg" alt="TULA MARKET logo" /></div>
+        <nav class="vendor-sidebar-nav">
+          <a href="./">Dashboard</a>
+          <a class="active" href="./products.html">Products</a>
+          <a href="./orders.html">Orders</a>
+          <a href="./analytics.html">Analytics</a>
+          <a href="./#store-settings">Store Settings</a>
+          <a href="./#profile">Profile</a>
+          <button id="vendorLogoutBtn" type="button">Logout</button>
+        </nav>
+      </aside>
+      <section id="vendorProductsContent" class="vendor-dashboard-main">
+        <div class="vendor-dashboard-head">
+          <div><p class="eyebrow">Inventory</p><h1 class="page-title">Products</h1><p class="page-copy">Review the products owned by your vendor account.</p></div>
+          <a class="btn btn-primary" href="../../pages/vendor-product.html">Create Product</a>
+        </div>
+        <section class="vendor-section vendor-products-panel">
+          <div class="vendor-product-controls">
+            <label class="vendor-search"><span>Search</span><input id="vendorProductSearch" type="search" placeholder="Search name, SKU, or category" /></label>
+            <label><span>Category</span><select id="vendorProductCategory"><option value="">All Categories</option></select></label>
+            <label><span>Availability</span><select id="vendorProductAvailability"><option value="">All Availability</option><option value="In Stock">In Stock</option><option value="Out of Stock">Out of Stock</option><option value="Preorder">Preorder</option></select></label>
+            <label><span>Status</span><select id="vendorProductStatus"><option value="">All Statuses</option><option value="Draft">Draft</option><option value="Active">Active</option><option value="Hidden">Hidden</option><option value="Out of Stock">Out of Stock</option><option value="Archived">Archived</option></select></label>
+            <label><span>Sort</span><select id="vendorProductSort"><option value="newest">Newest</option><option value="oldest">Oldest</option><option value="alphabetical">Alphabetically</option><option value="price">Price</option></select></label>
+          </div>
+          <p id="vendorProductsNotice" class="muted" role="status"></p>
+          <div class="section-header vendor-products-heading"><h2 class="section-title">Your Products</h2><span id="vendorProductsCount" class="badge">0 products</span></div>
+          <div class="table-wrap vendor-products-table-wrap">
+            <table class="vendor-products-table">
+              <thead><tr><th>Product</th><th>Price</th><th>Stock</th><th>Status</th><th>Date Created</th></tr></thead>
+              <tbody id="vendorProductsTable"><tr class="skeleton-row"><td><span></span></td><td><span></span></td><td><span></span></td><td><span></span></td><td><span></span></td></tr><tr class="skeleton-row"><td><span></span></td><td><span></span></td><td><span></span></td><td><span></span></td><td><span></span></td></tr><tr class="skeleton-row"><td><span></span></td><td><span></span></td><td><span></span></td><td><span></span></td><td><span></span></td></tr></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="../../firebase/firebase-config.js"></script>
+    <script src="../../firebase/auth.js"></script>
+    <script src="../../firebase/firestore.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script>document.getElementById('vendorLogoutBtn')?.addEventListener('click', () => { window.tulaAuth?.signOut(); window.location.href = '../../index.html'; });</script>
+  </body>
+</html>

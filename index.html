@@ -31,7 +31,7 @@
             <p>TULA MARKET brings together fashion, design, artisan goods, and premium lifestyle products in one elegant, glass-inspired experience.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="pages/shop.html">Shop Now</a>
-              <a class="btn btn-secondary" href="pages/vendor-dashboard.html">Become a Vendor</a>
+              <a class="btn btn-secondary" href="pages/vendor-onboarding.html">Become a Vendor</a>
             </div>
             <div class="stat-row">
               <span class="stat-pill">24/7 support</span>
@@ -93,40 +93,7 @@
           </div>
           <a class="btn btn-secondary" href="pages/shop.html">View All</a>
         </div>
-        <div class="grid grid-4">
-          <article class="product-card">
-            <div class="image-frame"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Luxury watch" /></div>
-            <span class="badge">Featured</span>
-            <h3>Signature Chronograph</h3>
-            <p class="meta">By Aurora Atelier</p>
-            <div class="rating">★★★★★</div>
-            <p class="price">$1,240</p>
-          </article>
-          <article class="product-card">
-            <div class="image-frame"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Premium sneakers" /></div>
-            <span class="badge">Trending</span>
-            <h3>Velvet Runner</h3>
-            <p class="meta">By Street Luxe</p>
-            <div class="rating">★★★★★</div>
-            <p class="price">$180</p>
-          </article>
-          <article class="product-card">
-            <div class="image-frame"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80" alt="Elegant bag" /></div>
-            <span class="badge">Bestseller</span>
-            <h3>Midnight Tote</h3>
-            <p class="meta">By Velvet House</p>
-            <div class="rating">★★★★☆</div>
-            <p class="price">$320</p>
-          </article>
-          <article class="product-card">
-            <div class="image-frame"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Modern accessory" /></div>
-            <span class="badge">Limited</span>
-            <h3>Platinum Pendant</h3>
-            <p class="meta">By Solstice Studio</p>
-            <div class="rating">★★★★★</div>
-            <p class="price">$480</p>
-          </article>
-        </div>
+        <div id="featuredProductsGrid" class="grid grid-4"></div>
       </section>
 
       <section class="section container reveal">
@@ -136,24 +103,7 @@
             <p class="section-subtitle">Premium storefronts with standout reputations.</p>
           </div>
         </div>
-        <div class="grid grid-4">
-          <article class="vendor-card">
-            <h3>Aurora Atelier</h3>
-            <p class="meta">Luxury accessories • 4.9 rating</p>
-          </article>
-          <article class="vendor-card">
-            <h3>Velvet House</h3>
-            <p class="meta">Modern fashion • 4.8 rating</p>
-          </article>
-          <article class="vendor-card">
-            <h3>Street Luxe</h3>
-            <p class="meta">Streetwear essentials • 4.7 rating</p>
-          </article>
-          <article class="vendor-card">
-            <h3>Solstice Studio</h3>
-            <p class="meta">Fine jewelry • 4.9 rating</p>
-          </article>
-        </div>
+        <div id="topVendorsGrid" class="grid grid-4"></div>
       </section>
 
       <section class="section container reveal">
@@ -163,22 +113,20 @@
             <p class="section-subtitle">Browse your next favorite collection.</p>
           </div>
         </div>
-        <div class="grid grid-4">
-          <article class="category-card"><h3>Fashion</h3><p class="meta">Iconic essentials</p></article>
-          <article class="category-card"><h3>Home</h3><p class="meta">Elevated living</p></article>
-          <article class="category-card"><h3>Beauty</h3><p class="meta">Clean luxury</p></article>
-          <article class="category-card"><h3>Electronics</h3><p class="meta">Premium tech</p></article>
-        </div>
+        <div id="popularCategoriesGrid" class="grid grid-4"></div>
       </section>
 
       <section class="section container reveal">
         <div class="newsletter">
           <h2 class="section-title">Join the TULA circle</h2>
           <p class="muted">Receive first access to drops, exclusive coupons, and local launches.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email" />
+          <form class="newsletter-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="newsletter" />
+            <input type="hidden" name="bot-field" />
+            <input name="email" type="email" placeholder="Enter your email" aria-label="Email address" required />
             <button class="btn btn-primary" type="submit">Subscribe</button>
           </form>
+          <p id="newsletterMessage" class="muted" role="status" style="margin-top: 10px;"></p>
         </div>
       </section>
     </main>
